@@ -14,7 +14,23 @@ public class COVID {
 	// Method returns the number of cases given the start cases and the target month.
 	public static int getCases(int startCase, int month) {
 		//TODO write your code below.
-		return 0;
+		int totalCases = startCase;
+
+		if(month == 1) {
+			return startCase;
+		} else if (month < 1) {
+			return -1;
+		}
+
+		for(int i = 2; i <= month; i++) {
+			if(i % 2 == 0) {
+				totalCases *= 3;
+			} else {
+				totalCases *= 2;
+			}
+		}
+
+		return totalCases;
 	}
 	
 	
