@@ -1,3 +1,4 @@
+// Morgane Bentzinger - 261062953
 
 public class COVID {
 
@@ -32,12 +33,23 @@ public class COVID {
 
 		return totalCases;
 	}
-	
-	
+
+	static int getNumMonthRec(int targetCases, int currentCases, int currentMonth){
+		if (targetCases == currentCases) {
+			return currentMonth;
+		}
+
+		if(targetCases < currentCases) {
+			throw new IllegalArgumentException("Month not found.");
+		}
+		currentMonth++;
+		currentCases *= currentMonth % 2 == 0 ? 3 : 2;
+		return getNumMonthRec(targetCases, currentCases, currentMonth);
+	}
+
 	//Recursive method that return the month of the cases collected
 	public static int getNumMonth(int cases, int startCase) {
 		//TODO write your code below. You must use recusion to solve this problem
-		return 0;
+		return getNumMonthRec(cases, startCase, 1);
 	}
-
 }
